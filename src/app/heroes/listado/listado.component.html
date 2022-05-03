@@ -1,0 +1,29 @@
+<p>Listado de Héroes</p>
+
+
+<!--<div *ngIf="heroeBorrado !== ''">  Solucion MIO -->
+<div *ngIf="heroeBorrado else noBorrado">  <!--solucion Profe-->
+    <h3>Héroe Eliminado :  <small>{{heroeBorrado}}</small></h3> 
+    
+</div>
+<!-- EL valor noBorrado que se menciona en la directiva *ngIf por el else, 
+hace referencia a un template identificado bajo la directiva ng-template.
+Este valor que identifica este template se escribe con un # como prefijo -->
+<br>
+<ng-template #noBorrado>
+    <h3>No ha borrado nada</h3> 
+</ng-template>
+
+<button (click)="borrarHeroe()">Borrar Heroe</button>
+
+<br>
+<ul>
+
+<!-- La directiva ngFor permite ejecutar un ciclo sobre un arreglo previamente definido -->
+
+    <li *ngFor=" let heroe of heroes; let i = index;">
+        {{i + 1}} - {{heroe}}
+    </li>
+</ul>
+
+
